@@ -506,3 +506,6 @@ Seccion 7 Generacion del build de Produccion y despliegues en github Pages. ----
 En este video se explica el comando build, el cual genera una carpeta llamada build que es la que se despliega en los
 servidores.
 
+----------------84 Despliegue de la aplicacion en github Pages---------------------
+Se inicializa un repositorio de git. primero
+Se hace el primer commit.
