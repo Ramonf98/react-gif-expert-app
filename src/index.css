@@ -1,13 +1,91 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap');
+
+*{
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Header */
+.titulo h2{
+  color: #fffdf7;
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  
 }
+
+.titulo{
+  background: url('./media/Fondo1.png') #0a2342;
+  background-position: center center;
+  padding: 20px 0px;
+}
+
+.container{
+  margin: 30px auto;
+  width: 80%;
+}
+
+.inputCategory{
+  background-color: rgb(255, 255, 255);
+  padding: 4px 10px;
+  border: 2px solid #ccc;
+  border-radius: 0.2rem;
+  color: #0a2342;
+  display: block;
+  font-size: 1rem;
+  margin: 0px auto;
+  margin-top: 10px;
+  width: 40%;
+
+}
+.inputCategory:focus{
+  border-color: #ffd400;
+}
+
+
+/* GifGrid */
+.categoryName{
+  padding: 5px 10px;
+  border-bottom: 1.5px solid #ccc;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0a2342;
+}
+.gifsContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* GifGridItem.js */
+.gifCard{
+  align-content: center;
+  border: none;
+  overflow: hidden;
+  border-radius: 3px;
+  margin: 10px 0;
+  margin-right: 10px;
+  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  background: #f46197;
+}
+.gifCard .gifTitle{
+  
+  text-align: center;
+  padding: 10px 10px;
+  font-size: 1rem;
+  background: #f46197;
+  color: #fffdf7;
+}
+
+.gifCard .gif{
+  min-height: 130px;
+  max-height: 130px;
+  width: 100%;
+  vertical-align: top;
+}
+
+
