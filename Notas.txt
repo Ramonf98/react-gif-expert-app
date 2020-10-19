@@ -600,5 +600,3 @@ No podemos evaluar directamente si la funcion setInputValue que esta dentro de l
 Pero podemos evaluar que cuando el handleInputValue sea llamado podamos ver el value en un parrafo. Entonces si el valor es mostrado
 entonces la funcion funciona correctamente.
 
-
-
