@@ -7,11 +7,14 @@ export const AddCategory = ( { setCategories } ) => {
     const [ inputValue, setInputValue ] = useState('');
     //Manejo del valor del Input
     const handledInputValue = (e)=>{
+        console.log('handledInputValue Llamado');
         return setInputValue( e.target.value );
     }
+
     //Manejo del evento Submit
     const handleSubmit = (e)=>{
         e.preventDefault();
+        //Si el input no esta vacio
         if( inputValue.trim().length > 2){
             setCategories( (cats) => [ inputValue, ...cats] );
             setInputValue('');
@@ -25,7 +28,8 @@ export const AddCategory = ( { setCategories } ) => {
             value={inputValue}
             onChange={handledInputValue} //Se dispara cada vez que la caja de texto cambie
             className="inputCategory" 
-            type="text">
+            type="text"
+            placeholder="Write Something...">
             </input>
         </form>
     )

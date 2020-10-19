@@ -214,7 +214,7 @@ La solucion a eso son los fragments.
 Pero ya depende de nosotros si suaremos esos div para darle estilos css a nuestro componentes hijo, o si bien no ocupamos un div
 y poder introducir los elementos en un contenedor que ya existe en el html.
 
-Una forma corta de colocar un fragment es usar las puras etiquetas sin nombre <></>. con esto no habria necesidad de importar el fragment.
+Una forma corta de colocar un fragment es usar las puras etiquetas sin nombre <i></i>. con esto no habria necesidad de importar el fragment.
 
 --------------37 Impresion de variables en el HTML.
 Para poder imprimir una variable dentro de una etiqueta html de un componente, se usan { variable } las llaves.
@@ -506,6 +506,99 @@ Seccion 7 Generacion del build de Produccion y despliegues en github Pages. ----
 En este video se explica el comando build, el cual genera una carpeta llamada build que es la que se despliega en los
 servidores.
 
-----------------84 Despliegue de la aplicacion en github Pages---------------------
+----------------85 Despliegue de la aplicacion en github Pages---------------------
 Se inicializa un repositorio de git. primero
 Se hace el primer commit.
+
+En este capitulo la carpeta build es renombrada como "docs", propiamente para el funcionamiento en github pages.
+
+Al desplegar la aplicacion en github pages marcaba un error sobre las ubicaciones de los archivos el cual se soluciono
+poniendo un . en el src de algunas direcciones en el index.html del docs.
+
+----------------88 Configurar el ambiente de pruebas---------------------
+Pasos para configurar la libreria ensyme.
+Primero instalar ensyme
+    npm i --save-dev enzyme enzyme-adapter-react-16
+Despues importarlo en setup test.
+    import Enzyme from 'enzyme';
+    import Adapter from 'enzyme-adapter-react-16';
+
+    Enzyme.configure({ adapter: new Adapter() });
+Seguido instalamos ensyme to json.
+    npm install --save-dev enzyme-to-json
+Y finalmente lo importamos
+    import {createSerializer} from 'enzyme-to-json';
+    
+    expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
+
+
+----------------90 Pruebas del componente gifGridItem---------------------
+La primera prueba que se corre es para saber si el titulo y la url estan quedando donde deben de ir.
+
+Con enzyme podemos extraer la props de un elemento html.
+Por ejemplo una imagen
+    <img src="algo.jpg" alt="Imagen de algo" > </img>
+
+Y si guardamos en una variable la imagen:
+    const img = wrapper.find('img').
+
+Podemos llamar a las properties de esa imagen:
+    img.props()
+
+Nos devolvera un objeto:
+    {src: "algo.jpg" alt: "Imagen de algo"}
+
+Si solo queremos evaluar una propiedad prodiamos usar:
+    img.prop('src');
+
+La segunda prueba que se corre, es la evaluacion de una clase en la img.
+Para saber si un div tiene una clase se usa el siguiente metodo.
+div.hasClass('animate__fadeIn')
+El cual devuelve un true o false.
+
+
+----------------91 Pruebas en el componente getGifs---------------------
+
+La primer prueba se trata de regresar 8 elementos. 
+La prueba es asincrona debido a que getGifs retorna una promesa.
+
+La segunda prueba es ver que sucede si mando un string vacio.
+
+
+----------------92 Pruebas en el componente AddCategory---------------------
+
+La primer prueba es verificar que coincida con el snapshot.
+
+Las pruebas en este componente ya son mas complicadas debido a que hay que simular interacciones de usuario.
+
+
+----------------93 Simular cambios en un input---------------------
+
+Para simular el evento onChange de un input:
+
+    input.simulate('change');
+
+En esta prueba nos encontramos con este error:
+    TypeError: Cannot read property 'target' of undefined
+
+Este error sucede porque la funcion que estams llamando en el evento change, recibe el evento e, el cual estamos mandando como
+undefined. 
+
+La solucion a ello, es que si llamamos al evento change en las pruebas hay que indicarle los valores que recibe.
+Por ejemplo:
+  const value = 'Hola mundo';
+        input.simulate('change',{ 
+            target: {
+                value: value,
+            }
+        });
+
+Entonces el objeto que estamos enviandole como segundo parametro es lo que toma como valor de e.
+En el navegador no ocupamos hacer esto porque e ya es un objeto definido.
+
+No podemos evaluar directamente si la funcion setInputValue que esta dentro de la funcion handleInputValue fue llamada.
+Pero podemos evaluar que cuando el handleInputValue sea llamado podamos ver el value en un parrafo. Entonces si el valor es mostrado
+entonces la funcion funciona correctamente.
+
+
+

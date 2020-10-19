@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el archivo GifGridItem.js Deben mostrar <GifGridItem /> correctamente  1`] = `
+<div
+  className="gifCard animate__animated animate__fadeIn "
+>
+  <img
+    alt="Gif No cargado"
+    className="gif"
+    src="https://www.google.com"
+  />
+  <p
+    className="gifTitle"
+  >
+    Batman
+  </p>
+</div>
+`;
